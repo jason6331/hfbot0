@@ -103,4 +103,4 @@ async def on_command_error(ctx, error):
 #Run Bot#
 ###   ###
     
-bot.run(str(os.environ.get('BOT_TOKEN')))
+bot.run("NTc1MzE2OTU0OTI4MzgxOTcy.XNWaOg.Jcw7it-PWhn2DKcsRTuWMQAZ8Ns")
