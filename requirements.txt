@@ -1,2 +1,1 @@
-pip
-pip install -U discord.py
+git+https://github.com/Rapptz/discord.py
