@@ -1,9 +1,5 @@
 from discord.ext import commands
 import discord
-import asyncio
-import random
-import requests
-import os
 
 bot = commands.Bot(command_prefix = ".")
 
