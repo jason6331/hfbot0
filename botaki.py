@@ -1,5 +1,9 @@
 from discord.ext import commands
 import discord
+import asyncio
+import random
+import requests
+import os
 
 bot = commands.Bot(command_prefix = ".")
 
@@ -99,4 +103,4 @@ async def on_command_error(ctx, error):
 #Run Bot#
 ###   ###
     
-bot.run("NTc1MzE2OTU0OTI4MzgxOTcy.XNGL0w.mUXIm6MI28pkgh3cCRLBUp06oaU")
+bot.run(str(os.environ.get('BOT_TOKEN')))
