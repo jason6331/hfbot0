@@ -26,7 +26,7 @@ Examples:
 
 Notes: If you use the 3rd parameter, **you must use the 2nd parameter as well!** If you want to use only the 3rd parameter do:
 `.dm "Hello There!" everyone [True/False]`
-You can also skip the 2nd and the 3rd parameters and it will just message all the online users (shown in Example 1).```'''
+You can also skip the 2nd and the 3rd parameters and it will just message all the online users (shown in Example 1).```Bot made by: jason6331'''
     guild = ctx.guild
     mod1 = discord.utils.get(guild.roles, name="Moderator")
     mod2 = discord.utils.get(guild.roles, name="Expert Moderator")
