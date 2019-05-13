@@ -9,7 +9,7 @@ bot = commands.Bot(command_prefix = ".")
 
 @bot.command()
 @commands.guild_only()
-#@commands.cooldown(1, 60, commands.BucketType.user)
+@commands.cooldown(1, 60, commands.BucketType.user)
 async def dm(ctx, message, role="everyone", online=True):
     '''```Sends a dm message to everyone in the server
 
