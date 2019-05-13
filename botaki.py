@@ -9,7 +9,7 @@ bot = commands.Bot(command_prefix = ".")
 
 @bot.command()
 @commands.guild_only()
-@commands.cooldown(1, 60, commands.BucketType.user)
+#@commands.cooldown(1, 60, commands.BucketType.user)
 async def dm(ctx, message, role="everyone", online=True):
     '''```Sends a dm message to everyone in the server
 
@@ -26,10 +26,7 @@ Examples:
 
 Notes: If you use the 3rd parameter, **you must use the 2nd parameter as well!** If you want to use only the 3rd parameter do:
 `.dm "Hello There!" everyone [True/False]`
-You can also skip the 2nd and the 3rd parameters and it will just message all the online users (shown in Example 1).
-
-**WARNING**: YOU MAY NOT OVERUSE THE DM COMMAND!!!
-```Bot made by: jason6331'''
+You can also skip the 2nd and the 3rd parameters and it will just message all the online users (shown in Example 1).```'''
     guild = ctx.guild
     mod1 = discord.utils.get(guild.roles, name="Moderator")
     mod2 = discord.utils.get(guild.roles, name="Expert Moderator")
@@ -42,7 +39,11 @@ You can also skip the 2nd and the 3rd parameters and it will just message all th
                 await ctx.channel.trigger_typing()
                 for i in guild.members:
                     if i.status != discord.Status.offline and i.bot == False:
-                        await i.send(message)
+                        bu = discord.utils.get(guild.members, id=575316954928381972)
+                        
+                        embed=discord.Embed(title=message, description="Sent by " + ctx.author.name, color=0x1bb6f1)
+                        embed.set_author(name="Help Force", icon_url=bu.avatar_url)
+                        await i.send(embed=embed)
                 await ctx.send("Job's Done!")
             else:
                 if poor_role == None:
@@ -53,7 +54,12 @@ You can also skip the 2nd and the 3rd parameters and it will just message all th
                     for i in guild.members:
                         if poor_role in i.roles:
                             if i.status != discord.Status.offline and i.bot == False:
-                                await i.send(message)
+                                bu = discord.utils.get(guild.members, id=575316954928381972)
+
+                                if ctx.author.nick == None: embed=discord.Embed(title=message, description="Sent by " + ctx.author.name, color=0x1bb6f1) 
+                                else: embed=discord.Embed(title=message, description="Sent by " + ctx.author.nick, color=0x1bb6f1)
+                                embed.set_author(name="Help Force", icon_url=bu.avatar_url)
+                                await i.send(embed=embed)
                     await ctx.send("Job's Done!")
                 
         elif online == False:
@@ -63,7 +69,11 @@ You can also skip the 2nd and the 3rd parameters and it will just message all th
                 await ctx.channel.trigger_typing()
                 for i in guild.members:
                     if i.bot == False:
-                        await i.send(message)
+                        bu = discord.utils.get(guild.members, id=575316954928381972)
+                        
+                        embed=discord.Embed(title=message, description="Sent by " + ctx.author.name, color=0x1bb6f1)
+                        embed.set_author(name="Help Force", icon_url=bu.avatar_url)
+                        await i.send(embed=embed)
                 await ctx.send("Job's Done!")
             else:
                 if poor_role == None:
@@ -74,7 +84,11 @@ You can also skip the 2nd and the 3rd parameters and it will just message all th
                     for i in guild.members:
                         if poor_role in i.roles:
                             if i.bot == False:
-                                await i.send(message)
+                                bu = discord.utils.get(guild.members, id=575316954928381972)
+                                
+                                embed=discord.Embed(title=message, description="Sent by " + ctx.author.name, color=0x1bb6f1)
+                                embed.set_author(name="Help Force", icon_url=bu.avatar_url)
+                                await i.send(embed=embed)
                     await ctx.send("Job's Done!")
     else:
         await ctx.send("You don't have permission for this command.")
@@ -98,21 +112,8 @@ async def on_command_error(ctx, error):
     else:
         raise error
 
-###      ###
-#On Message#
-###      ###
-
-@bot.event
-async def on_message(message):
-    
-    await bot.change_presence(status=discord.Status.online, activity=discord.Game(name="Club Penguin Online"))
-    try:
-        if message.content[1] != ".": await bot.process_commands(message)
-    except IndexError:
-        pass
-
 ###   ###
 #Run Bot#
 ###   ###
     
-bot.run("NTc1MzE2OTU0OTI4MzgxOTcy.XNWaOg.Jcw7it-PWhn2DKcsRTuWMQAZ8Ns")
+bot.run("NTc1MzE2OTU0OTI4MzgxOTcy.XNGL0w.mUXIm6MI28pkgh3cCRLBUp06oaU")
