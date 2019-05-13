@@ -111,6 +111,19 @@ async def on_command_error(ctx, error):
         await ctx.channel.send("There is a cooldown for this command.")
     else:
         raise error
+        
+###      ###
+#On Message#
+###      ###
+
+@bot.event
+async def on_message(message):
+    
+    await bot.change_presence(status=discord.Status.online, activity=discord.Game(name="Club Penguin Online"))
+    try:
+        if message.content[1] != ".": await bot.process_commands(message)
+    except IndexError:
+        pass
 
 ###   ###
 #Run Bot#
