@@ -20,7 +20,7 @@ async def help(ctx, *command):
     if mod1 in ctx.author.roles or mod2 in ctx.author.roles or mod3 in ctx.author.roles or ctx.author == jason:
         if c == '':
             embed=discord.Embed(title="Commands of HF Bot", description="`help dm`", color=0x1bb6f1)
-            embed.add_field(name="Do `.help [commands...]` for more info about it.", value="Command from: " + str(ctx.message.channel), inline=True)
+            embed.add_field(name="Do `.help help` or `.help dm` for more info about each command.", value="Command from: " + str(ctx.message.channel), inline=True)
             embed.set_footer(text="Bot made by jason6331")
             await ctx.author.send(embed=embed)
         elif c == ' help':
