@@ -118,8 +118,15 @@ async def on_command_error(ctx, error):
 
 @bot.event
 async def on_message(message):
-    
     await bot.change_presence(status=discord.Status.online, activity=discord.Game(name="Club Penguin Online"))
+    
+    if message == ".help dm":
+        guild = message.guild
+        mod1 = discord.utils.get(guild.roles, name="Moderator")
+        mod2 = discord.utils.get(guild.roles, name="Expert Moderator")
+        mod3 = discord.utils.get(guild.roles, name="Leaders")
+        if mod1 in message.author.roles or mod2 in message.author.roles or mod3 in message.author.roles: await bot.process_commands(message)
+        else: await message.channel.send
     try:
         if message.content[1] != ".": await bot.process_commands(message)
     except IndexError:
