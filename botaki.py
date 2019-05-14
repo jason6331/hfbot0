@@ -2,6 +2,46 @@ from discord.ext import commands
 import discord
 
 bot = commands.Bot(command_prefix = ".")
+bot.remove_command("help")
+
+###  ###
+# Help #
+###  ###
+
+@bot.command()
+async def help(ctx, *command):
+    c = ''
+    for i in command: c = c + ' ' + i
+    guild = ctx.guild
+    mod1 = discord.utils.get(guild.roles, name="Moderator")
+    mod2 = discord.utils.get(guild.roles, name="Expert Moderator")
+    mod3 = discord.utils.get(guild.roles, name="Leaders")
+    jason = discord.utils.get(guild.members, id=368359878651019265)
+    if mod1 in ctx.author.roles or mod2 in ctx.author.roles or mod3 in ctx.author.roles or ctx.author == jason:
+        if c == '':
+            embed=discord.Embed(title="Commands of HF Bot", description="`.help .dm`", color=0x1bb6f1)
+            embed.add_field(name="Do `.help [commands...]` for more info about it.", value="Command from: " + str(ctx.message.channel), inline=True)
+            embed.set_footer(text="Bot made by jason6331")
+            await ctx.author.send(embed=embed)
+        elif c == ' help':
+            embed=discord.Embed(title="Commands of HF Bot", description="`.help [commands...]`", color=0x1bb6f1)
+            embed.add_field(name="Function:", value="Shows this message.", inline=False)
+            embed.set_footer(text="Bot made by jason6331")
+            await ctx.author.send(embed=embed)
+        elif c == ' dm':
+            embed=discord.Embed(title="Commands of HF Bot", description="`.dm <message> [Role Name] [True/False]`", color=0x1bb6f1)
+            embed.add_field(name="Function:", value="Sends a dm message to everyone in the server.", inline=False)
+            embed.add_field(name="Syntax:", value="`.dm <message> [Role Name] [True/False]`", inline=False)
+            embed.add_field(name="**<message>**:", value="The message that will be dm'ed to the users. **If it's more than one word you should use quotation marks ("").**", inline=False)
+            embed.add_field(name="**[Role Name]**:", value="Say the role that should be pinged. **If it's more than one word you should use quotation marks ("").** Defaults on `everyone`.", inline=False)
+            embed.add_field(name="**[True/False]**:", value="Say whether only online users should be pinged or everyone with the role. Defaults on `True` (only online).", inline=False)
+            embed.add_field(name="Examples:", value="1) `.dm \"Hello There!\"` or `.dm \"Hello There!\" everyone True` Dm's everyone online. Default values.\n2) `.dm \"Hello There!\" Event` Dm's every online user with the Event role.\n3) `.dm \"Hello There!\" everyone False` Dm's everyone online and offline.\n4) `.dm \"Hello There!\" Event False` Dm's every online and offline user with the Event role.", inline=False)
+            embed.add_field(name="Notes:", value="If you use the 3rd parameter, **you must use the 2nd parameter as well!** If you want to use only the 3rd parameter do:\n`.dm \"Hello There!\" everyone [True/False]`", inline=False)
+            embed.add_field(name="Pro Tip:", value="You can skip the 2nd and the 3rd parameters and it will just message all the online users (shown in Example 1).", inline=False)
+            embed.set_footer(text="Bot made by jason6331")
+            await ctx.author.send(embed=embed)
+    else:
+        await ctx.send("You don't have permission for this command.")
 
 ###    ###
 #Commands#
@@ -11,27 +51,12 @@ bot = commands.Bot(command_prefix = ".")
 @commands.guild_only()
 @commands.cooldown(1, 60, commands.BucketType.user)
 async def dm(ctx, message, role="everyone", online=True):
-    '''```Sends a dm message to everyone in the server
-
-Syntax: `.dm <message> [Role Name] [True/False]`
-**<message>**: The message that will be dm'ed to the users. **If it's more than one word you should use quotation marks ("").**
-**[Role Name]**: Say the role that should be pinged. **If it's more than one word you should use quotation marks ("").** Defaults on `everyone`.
-**[True/False]**: Say whether only online users should be pinged or everyone with the role. Defaults on `True` (only online).
-
-Examples:
-1) `.dm "Hello There!"` or `.dm "Hello There!" everyone True` Dm's everyone online. Default values.
-2) `.dm "Hello There!" Event` Dm's every online user with the Event role.
-3) `.dm "Hello There!" everyone False` Dm's everyone online and offline.
-4) `.dm "Hello There!" Event False` Dm's every online and offline user with the Event role.
-
-Notes: If you use the 3rd parameter, **you must use the 2nd parameter as well!** If you want to use only the 3rd parameter do:
-`.dm "Hello There!" everyone [True/False]`
-You can also skip the 2nd and the 3rd parameters and it will just message all the online users (shown in Example 1).```'''
     guild = ctx.guild
     mod1 = discord.utils.get(guild.roles, name="Moderator")
     mod2 = discord.utils.get(guild.roles, name="Expert Moderator")
     mod3 = discord.utils.get(guild.roles, name="Leaders")
-    if mod1 in ctx.author.roles or mod2 in ctx.author.roles or mod3 in ctx.author.roles:
+    jason = discord.utils.get(guild.members, id=368359878651019265)
+    if mod1 in ctx.author.roles or mod2 in ctx.author.roles or mod3 in ctx.author.roles or ctx.author == jason:
         if online == True:
             poor_role = discord.utils.get(guild.roles, name=role)
             if role == "everyone":
@@ -126,7 +151,8 @@ async def on_message(message):
         mod2 = discord.utils.get(guild.roles, name="Expert Moderator")
         mod3 = discord.utils.get(guild.roles, name="Leaders")
         if mod1 in message.author.roles or mod2 in message.author.roles or mod3 in message.author.roles: await bot.process_commands(message)
-        else: await message.channel.send
+        else: await message.channel.send("You don't have permission for this command.")
+        
     try:
         if message.content[1] != ".": await bot.process_commands(message)
     except IndexError:
