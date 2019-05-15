@@ -13,11 +13,11 @@ async def help(ctx, *command):
     c = ''
     for i in command: c = c + ' ' + i
     guild = ctx.guild
-    mod1 = discord.utils.get(guild.roles, name="Moderator")
-    mod2 = discord.utils.get(guild.roles, name="Expert Moderator")
+    #mod1 = discord.utils.get(guild.roles, name="Moderator")
+    #mod2 = discord.utils.get(guild.roles, name="Expert Moderator")
     mod3 = discord.utils.get(guild.roles, name="Leaders")
     jason = discord.utils.get(guild.members, id=368359878651019265)
-    if mod1 in ctx.author.roles or mod2 in ctx.author.roles or mod3 in ctx.author.roles or ctx.author == jason:
+    if mod3 in ctx.author.roles or ctx.author == jason:
         if c == '':
             embed=discord.Embed(title="Commands of HF Bot", description="`help dm`", color=0x1bb6f1)
             embed.add_field(name="Do `.help help` or `.help dm` for more info about each command.", value="Command from: " + str(ctx.message.channel), inline=True)
@@ -52,11 +52,11 @@ async def help(ctx, *command):
 @commands.cooldown(1, 60, commands.BucketType.user)
 async def dm(ctx, message, role="everyone", online=True):
     guild = ctx.guild
-    mod1 = discord.utils.get(guild.roles, name="Moderator")
-    mod2 = discord.utils.get(guild.roles, name="Expert Moderator")
+    #mod1 = discord.utils.get(guild.roles, name="Moderator")
+    #mod2 = discord.utils.get(guild.roles, name="Expert Moderator")
     mod3 = discord.utils.get(guild.roles, name="Leaders")
     jason = discord.utils.get(guild.members, id=368359878651019265)
-    if mod1 in ctx.author.roles or mod2 in ctx.author.roles or mod3 in ctx.author.roles or ctx.author == jason:
+    if mod3 in ctx.author.roles or ctx.author == jason:
         if online == True:
             poor_role = discord.utils.get(guild.roles, name=role)
             if role == "everyone":
