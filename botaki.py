@@ -81,8 +81,7 @@ async def dm(ctx, message, role="everyone", online=True):
                             if i.status != discord.Status.offline and i.bot == False:
                                 bu = discord.utils.get(guild.members, id=575316954928381972)
 
-                                if ctx.author.nick == None: embed=discord.Embed(title=message, color=0x1bb6f1) 
-                                else: embed=discord.Embed(title=message, color=0x1bb6f1)
+                                embed=discord.Embed(title=message, color=0x1bb6f1)
                                 embed.set_author(name="Help Force", icon_url=bu.avatar_url)
                                 await i.send(embed=embed)
                     await ctx.send("Job's Done!")
@@ -133,7 +132,7 @@ async def on_command_error(ctx, error):
     elif isinstance(error, commands.NoPrivateMessage):
         await ctx.channel.send("You can only do this command in the server.")
     elif isinstance(error, commands.CommandOnCooldown):
-        await ctx.channel.send("There is a cooldown for this command.")
+        await ctx.channel.send("There is a cooldown for this command (1 minute).")
     else:
         raise error
         
