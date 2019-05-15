@@ -66,7 +66,7 @@ async def dm(ctx, message, role="everyone", online=True):
                     if i.status != discord.Status.offline and i.bot == False:
                         bu = discord.utils.get(guild.members, id=575316954928381972)
                         
-                        embed=discord.Embed(title=message, description="Sent by " + ctx.author.name, color=0x1bb6f1)
+                        embed=discord.Embed(title=message, color=0x1bb6f1)
                         embed.set_author(name="Help Force", icon_url=bu.avatar_url)
                         await i.send(embed=embed)
                 await ctx.send("Job's Done!")
@@ -81,7 +81,7 @@ async def dm(ctx, message, role="everyone", online=True):
                             if i.status != discord.Status.offline and i.bot == False:
                                 bu = discord.utils.get(guild.members, id=575316954928381972)
 
-                                if ctx.author.nick == None: embed=discord.Embed(title=message, description="Sent by " + ctx.author.name, color=0x1bb6f1) 
+                                if ctx.author.nick == None: embed=discord.Embed(title=message, color=0x1bb6f1) 
                                 else: embed=discord.Embed(title=message, description="Sent by " + ctx.author.nick, color=0x1bb6f1)
                                 embed.set_author(name="Help Force", icon_url=bu.avatar_url)
                                 await i.send(embed=embed)
@@ -96,7 +96,7 @@ async def dm(ctx, message, role="everyone", online=True):
                     if i.bot == False:
                         bu = discord.utils.get(guild.members, id=575316954928381972)
                         
-                        embed=discord.Embed(title=message, description="Sent by " + ctx.author.name, color=0x1bb6f1)
+                        embed=discord.Embed(title=message, color=0x1bb6f1)
                         embed.set_author(name="Help Force", icon_url=bu.avatar_url)
                         await i.send(embed=embed)
                 await ctx.send("Job's Done!")
@@ -111,7 +111,7 @@ async def dm(ctx, message, role="everyone", online=True):
                             if i.bot == False:
                                 bu = discord.utils.get(guild.members, id=575316954928381972)
                                 
-                                embed=discord.Embed(title=message, description="Sent by " + ctx.author.name, color=0x1bb6f1)
+                                embed=discord.Embed(title=message, color=0x1bb6f1)
                                 embed.set_author(name="Help Force", icon_url=bu.avatar_url)
                                 await i.send(embed=embed)
                     await ctx.send("Job's Done!")
