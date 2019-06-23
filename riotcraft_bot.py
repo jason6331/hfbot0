@@ -1,6 +1,7 @@
 from discord.ext import commands
 import discord
 from random import randint
+import os
 
 bot = commands.Bot(command_prefix = ".")
 bot.remove_command("help")
@@ -97,4 +98,4 @@ async def on_member_join(member):
 #Run Bot#
 ###   ###
 
-
+bot.run(os.environ.get("token"))
