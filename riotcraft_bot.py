@@ -97,4 +97,4 @@ async def on_member_join(member):
 #Run Bot#
 ###   ###
 
-bot.run("NTY2OTYwNTc0NjE3ODc4NTI5.XQ9J-A.7Suhgod8vATAlS2yahjj27EHNEM")
+
