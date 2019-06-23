@@ -54,7 +54,11 @@ async def announce(ctx, ch, *message):
         c = ''
         for i in message: c = c + ' ' + i
         channel = discord.utils.get(guild.text_channels, mention=ch)
-        await channel.send(c)
+        bu = discord.utils.get(guild.members, id=566960574617878529)
+        
+        embed=discord.Embed(title=c, color=0x1bb6f1)
+        embed.set_author(name="RiotCraft", icon_url=bu.avatar_url)
+        await channel.send(embed=embed)
         await ctx.send("Message Announced!")
     else:
         await ctx.send("You do not have permission to use this command.")
