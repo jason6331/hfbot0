@@ -1,1 +1,1 @@
-worker: python botaki.py
+worker: python riotcraft_bot.py
